@@ -19,5 +19,6 @@ return {
 
     -- Keybindings
     vim.keymap.set("n", keymap, ":Gen<CR>", {})
+    vim.keymap.set("v", keymap, ":Gen<CR>", {})
   end,
 }
