@@ -1,4 +1,16 @@
 return {
+  -- add extra lanaguage servers
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        gdscript = {
+          mason = false,
+        },
+      },
+    },
+  },
+  -- add default language servers/linters
   {
     "williamboman/mason.nvim",
     opts = {
