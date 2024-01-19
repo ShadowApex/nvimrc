@@ -7,6 +7,9 @@ return {
         gdscript = {
           mason = false,
         },
+        dartls = {
+          mason = false,
+        },
       },
     },
   },
@@ -22,7 +25,6 @@ return {
         "cmakelang",
         "codespell",
         "cpplint",
-        "csharp-language-server",
         "deno",
         "dockerfile-language-server",
         "eslint-lsp",
