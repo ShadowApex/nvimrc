@@ -1,24 +1,33 @@
-local keymap = "<C-a>"
 return {
-  "David-Kunz/gen.nvim",
-  config = function()
-    local gen = require("gen")
-    -- LLM Model
-    --gen.model = "minstral:instruct"
+  "nomnivore/ollama.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+  },
 
-    -- Custom prompts
-    require("gen").prompts["Elaborate_Text"] = {
-      prompt = "Elaborate the following text:\n$text",
-      replace = true,
-    }
-    require("gen").prompts["Fix_Code"] = {
-      prompt = "Fix the following code. Only ouput the result in format ```$filetype\n...\n```:\n```$filetype\n$text\n```",
-      replace = true,
-      extract = "```$filetype\n(.-)```",
-    }
+  -- All the user commands added by the plugin
+  cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
 
-    -- Keybindings
-    vim.keymap.set("n", keymap, ":Gen<CR>", {})
-    vim.keymap.set("v", keymap, ":Gen<CR>", {})
-  end,
+  keys = {
+    -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
+    {
+      "<leader>oo",
+      ":<c-u>lua require('ollama').prompt()<cr>",
+      desc = "ollama prompt",
+      mode = { "n", "v" },
+    },
+
+    -- Sample keybind for direct prompting. Note that the <c-u> is important for selections to work properly.
+    {
+      "<leader>oG",
+      ":<c-u>lua require('ollama').prompt('Generate_Code')<cr>",
+      desc = "ollama Generate Code",
+      mode = { "n", "v" },
+    },
+  },
+
+  ---@type Ollama.Config
+  opts = {
+    -- your configuration overrides
+    model = "codellama",
+  },
 }
