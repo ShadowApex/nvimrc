@@ -5,5 +5,5 @@
 -- Show a column guide
 vim.opt.colorcolumn = "80"
 
--- Disable relative line numbers
-vim.opt.relativenumber = false
+-- Enable relative line numbers
+vim.opt.relativenumber = true

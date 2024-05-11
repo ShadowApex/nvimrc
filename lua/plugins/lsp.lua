@@ -41,7 +41,6 @@ return {
         "marksman",
         "misspell",
         "nginx-language-server",
-        "omnisharp",
         "prettier",
         "pylint",
         "pyright",
