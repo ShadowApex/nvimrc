@@ -13,6 +13,17 @@ return {
       },
     },
   },
+  -- prevent rustaceanvim LSP conflict with mason (:h rustaceanvim.mason)
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      setup = {
+        rust_analyzer = function()
+          return true
+        end,
+      },
+    },
+  },
   -- add default language servers/linters
   {
     "williamboman/mason.nvim",
@@ -45,7 +56,6 @@ return {
         "pylint",
         "pyright",
         "python-lsp-server",
-        "rust-analyzer",
         "shellcheck",
         "shfmt",
         "sqlls",

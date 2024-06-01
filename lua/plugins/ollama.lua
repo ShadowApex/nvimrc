@@ -1,33 +1,68 @@
 return {
-  "nomnivore/ollama.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-  },
-
-  -- All the user commands added by the plugin
-  cmd = { "Ollama", "OllamaModel", "OllamaServe", "OllamaServeStop" },
-
-  keys = {
-    -- Sample keybind for prompt menu. Note that the <c-u> is important for selections to work properly.
-    {
-      "<leader>oo",
-      ":<c-u>lua require('ollama').prompt()<cr>",
-      desc = "ollama prompt",
-      mode = { "n", "v" },
+  -- CodeCompanion
+  {
+    "olimorris/codecompanion.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-telescope/telescope.nvim", -- Optional
+      {
+        "stevearc/dressing.nvim", -- Optional: Improves the default Neovim UI
+        opts = {},
+      },
     },
-
-    -- Sample keybind for direct prompting. Note that the <c-u> is important for selections to work properly.
-    {
-      "<leader>oG",
-      ":<c-u>lua require('ollama').prompt('Generate_Code')<cr>",
-      desc = "ollama Generate Code",
-      mode = { "n", "v" },
+    cmd = {
+      "CodeCompanion",
+      "CodeCompanionChat",
+      "CodeCompanionToggle",
+      "CodeCompanionActions",
+    },
+    config = true,
+    opts = {
+      strategies = {
+        chat = "ollama",
+        inline = "ollama",
+      },
     },
   },
 
-  ---@type Ollama.Config
-  opts = {
-    -- your configuration overrides
-    model = "codellama",
+  -- Llama Copilot
+  {
+    "Faywyn/llama-copilot.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      host = "localhost",
+      port = "11434",
+      model = "llama3:latest",
+      max_completion_size = 15, -- use -1 for limitless
+      debug = false,
+    },
   },
+  --config = function()
+  --  require("codecompanion").setup({
+  --    adapters = {
+  --      chat = require("codecompanion.adapters").use("ollama", {
+  --        schema = {
+  --          model = {
+  --            default = "llama3:latest",
+  --          },
+  --        },
+  --      }),
+  --      inline = require("codecompanion.adapters").use("ollama", {
+  --        schema = {
+  --          model = {
+  --            default = "llama3:latest",
+  --          },
+  --        },
+  --      }),
+  --    },
+  --    --strategies = {
+  --    --  chat = "ollama",
+  --    --  inline = "ollama",
+  --    --  --tool = "ollama",
+  --    --},
+  --  })
+  --end,
 }
