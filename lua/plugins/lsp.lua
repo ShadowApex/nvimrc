@@ -10,6 +10,38 @@ return {
         dartls = {
           mason = false,
         },
+        yamlls = {
+          mason = false,
+        },
+        nil_ls = {
+          mason = false,
+          settings = {
+            ["nil"] = {
+              nixpkgs = {
+                expr = "import <nixpkgs> { }",
+              },
+              formatting = {
+                command = { "nixfmt" }, -- or alejandra or nixpkgs-fmt
+              },
+            },
+          },
+        },
+        nixd = {
+          mason = false,
+          settings = {
+            ["nixd"] = {
+              nixpkgs = {
+                expr = "import <nixpkgs> { }",
+              },
+              formatting = {
+                command = { "nixfmt" }, -- or alejandra or nixpkgs-fmt
+              },
+            },
+          },
+        },
+        csharp_ls = {
+          mason = false,
+        },
       },
     },
   },

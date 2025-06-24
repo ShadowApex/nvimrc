@@ -7,3 +7,6 @@ vim.opt.colorcolumn = "80"
 
 -- Enable relative line numbers
 vim.opt.relativenumber = true
+
+-- Clipboard
+vim.o.clipboard = 'unnamedplus'
