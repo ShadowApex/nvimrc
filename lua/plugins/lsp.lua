@@ -42,10 +42,12 @@ return {
         csharp_ls = {
           mason = false,
         },
+        zls = {
+          mason = false,
+        },
       },
     },
   },
-  { "cordx56/rustowl", dependencies = { "neovim/nvim-lspconfig" } },
   -- prevent rustaceanvim LSP conflict with mason (:h rustaceanvim.mason)
   {
     "neovim/nvim-lspconfig",
