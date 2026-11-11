@@ -23,13 +23,14 @@ return {
         ollama = function()
           return require("codecompanion.adapters").extend("ollama", {
             env = {
-              url = "http://192.168.0.50:11434",
+              url = "http://htpc:11434",
             },
             schema = {
               model = {
+                default = "qwen3-coder:latest",
                 --default = "qwen2.5-coder:latest",
                 --default = "llama3.2:latest",
-                default = "gemma3:latest",
+                --default = "gemma3:latest",
                 --default = "deepseek-r1:latest",
               },
             },
@@ -86,7 +87,7 @@ return {
       -- of 512, serves as an good starting point to estimate your computing
       -- power. Once you have a reliable estimate of your local computing power,
       -- you should adjust the context window to a larger value.
-      context_window = 512,
+      context_window = 1024,
       provider_options = {
         openai_fim_compatible = {
           -- For Windows users, TERM may not be present in environment variables.
@@ -94,8 +95,9 @@ return {
           api_key = "TERM",
           name = "Ollama",
           --end_point = "http://localhost:11434/v1/completions",
-          end_point = "http://192.168.0.50:11434/v1/completions",
-          model = "qwen2.5-coder:latest",
+          end_point = "http://htpc:11434/v1/completions",
+          --model = "qwen2.5-coder:14b",
+          model = "qwen3-coder",
           --model = "llama3.2:latest",
           optional = {
             max_tokens = 56,

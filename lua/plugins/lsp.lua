@@ -82,7 +82,7 @@ return {
   },
   -- add default language servers/linters
   {
-    "williamboman/mason.nvim",
+    "mason-org/mason.nvim",
     opts = {
       ensure_installed = {
         "bash-language-server",
