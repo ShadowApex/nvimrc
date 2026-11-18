@@ -36,6 +36,14 @@ return {
               formatting = {
                 command = { "nixfmt" }, -- or alejandra or nixpkgs-fmt
               },
+              options = {
+                nixos = {
+                  expr = '(builtins.getFlake "/home/william/Projects/nix-config").nixosConfigurations.framework.options',
+                },
+                fulfil = {
+                  expr = '(builtins.getFlake "/home/william/Projects/fulfil-nix-poc").nixosConfigurations.default.options',
+                },
+              },
             },
           },
         },
